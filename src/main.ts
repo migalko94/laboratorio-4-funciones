@@ -1,75 +1,77 @@
-import "./style.css";
-
 function avanzarTurno(): void {
-  const turnoActual = (document.getElementById("numero-turno") as HTMLElement)
-    .innerHTML;
+  let turnoActual = document.getElementById("numero-turno");
 
-  const resultado = parseInt(turnoActual) + 1;
+  if (turnoActual !== null && turnoActual !== undefined) {
+    const resultado = parseInt(turnoActual.innerHTML) + 1;
 
-  const resultadoElement = document.getElementById("numero-turno");
-
-  if (resultadoElement !== null && resultadoElement !== undefined) {
-    resultadoElement.innerHTML = resultado.toString().padStart(2, "0");
+    turnoActual.innerHTML = `${resultado}`.padStart(2, "0");
   }
 }
 
 const botonAvance = document.getElementById("avance");
-botonAvance?.addEventListener("click", avanzarTurno);
+if (botonAvance !== null && botonAvance !== undefined) {
+  botonAvance.addEventListener("click", avanzarTurno);
+}
 
 function retrocederTurno(): void {
-  const turnoActual = (document.getElementById("numero-turno") as HTMLElement)
-    .innerHTML;
+  let turnoActual = document.getElementById("numero-turno");
 
-  let resultado = parseInt(turnoActual) - 1;
+  if (turnoActual !== null && turnoActual !== undefined) {
+    let resultado = parseInt(turnoActual.innerHTML) - 1;
 
-  if (parseInt(turnoActual) - 1 <= 0) {
-    resultado = 0;
-  }
+    if (parseInt(turnoActual.innerHTML) <= 0) {
+      resultado = 0;
+    }
 
-  const resultadoElement = document.getElementById("numero-turno");
-
-  if (resultadoElement !== null && resultadoElement !== undefined) {
-    resultadoElement.innerHTML = resultadoElement.innerHTML = resultado
-      .toString()
-      .padStart(2, "0");
+    turnoActual.innerHTML = `${resultado}`.padStart(2, "0");
   }
 }
 
 const botonRetroceso = document.getElementById("retroceso");
-botonRetroceso?.addEventListener("click", retrocederTurno);
+if (botonRetroceso !== null && botonRetroceso !== undefined) {
+  botonRetroceso.addEventListener("click", retrocederTurno);
+}
 
 function reiniciarTurno(): void {
   const resultado = 0;
 
-  const resultadoElement = document.getElementById("numero-turno");
+  const turnoActual = document.getElementById("numero-turno");
 
-  if (resultadoElement !== null && resultadoElement !== undefined) {
-    resultadoElement.innerHTML = resultado.toString().padStart(2, "0");
+  if (turnoActual !== null && turnoActual !== undefined) {
+    turnoActual.innerHTML = `${resultado}`.padStart(2, "0");
   }
 }
 
 const botonReinicio = document.getElementById("reiniciar");
-botonReinicio?.addEventListener("click", reiniciarTurno);
+if (botonReinicio !== null && botonReinicio !== undefined) {
+  botonReinicio.addEventListener("click", reiniciarTurno);
+}
 
 function seleccionarTurno(): void {
-  const turnoSeleccionado = (
-    document.getElementById("seleccionarturno") as HTMLInputElement
-  ).value;
-  let resultado = parseInt(turnoSeleccionado);
+  const turnoSeleccionadoElement = document.getElementById("seleccionarturno");
+  if (
+    turnoSeleccionadoElement !== null &&
+    turnoSeleccionadoElement !== undefined &&
+    turnoSeleccionadoElement instanceof HTMLInputElement
+  ) {
+    const turnoSeleccionado = turnoSeleccionadoElement.value;
+    let resultado = parseInt(turnoSeleccionado);
 
-  if (parseInt(turnoSeleccionado) < 0) {
-    resultado = 0;
-  }
-  if (isNaN(resultado)) {
-    resultado = 0;
-  }
+    if (parseInt(turnoSeleccionado) < 0) {
+      resultado = 0;
+    }
+    if (isNaN(resultado)) {
+      resultado = 0;
+    }
+    const turnoActual = document.getElementById("numero-turno");
 
-  const resultadoElement = document.getElementById("numero-turno");
-
-  if (resultadoElement !== null && resultadoElement !== undefined) {
-    resultadoElement.innerHTML = resultado.toString().padStart(2, "0");
+    if (turnoActual !== null && turnoActual !== undefined) {
+      turnoActual.innerHTML = `${resultado}`.padStart(2, "0");
+    }
   }
 }
 
 const botonSeleccion = document.getElementById("seleccionar");
-botonSeleccion?.addEventListener("click", seleccionarTurno);
+if (botonSeleccion !== null && botonSeleccion !== undefined) {
+  botonSeleccion.addEventListener("click", seleccionarTurno);
+}
